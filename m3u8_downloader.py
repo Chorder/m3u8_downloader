@@ -67,10 +67,11 @@ if __name__ == "__main__":
                 sys.stdout.write('\r%r 下载失败: %s' % (ts, exc))
             else:
                 sys.stdout.write('\r%r 下载成功, %s K' % (ts['ts_url'],os.path.getsize(ts_file)/1024 ) )
-        print("\r[+] 下载完成，开始合并ts文件")
-        with open( "%s.ts" % output, "wb" ) as f:
-           for ts in ts_list:
-               sys.stdout.write("\r合并 %s" % ts['ts_file'])
-               f.write( open(ts['ts_file'],'rb').read() )
-        f.close()
-        print("\r[+] 合并完成，保存在 %s.ts" % output )
+                
+    print("\r[+] 下载完成，开始合并ts文件")
+    with open( "%s.ts" % output, "wb" ) as f:
+       for ts in ts_list:
+           sys.stdout.write("\r合并 %s" % ts['ts_file'])
+           f.write( open(ts['ts_file'],'rb').read() )
+    f.close()
+    print("\r[+] 合并完成，保存在 %s.ts" % output )
